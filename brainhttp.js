@@ -31,3 +31,27 @@ post = (url, employees, callback) => {
         callback(employees);
     }
 }
+
+// put request
+put = (url, employees, callback) => {
+    this.http.open('PUT', url, true);
+    this.http.setRequestHeader('content-Type', 'application/json');
+    this.http.send(JSON.stringify(employees));
+    this.http.onload = () => {
+        let data = this.http.responseText;
+        let employees = JSON.parse(data);
+        callback(employees);
+    }
+}
+
+// delete reuest
+delet = (url, callback) => {
+    this.http.opne('DELETE', url, true);
+    this.http.setRequestHeader('content-Type', 'application/json');
+    this.http.send();
+    this.this.onload = () => {
+        let data = this.http.responseText;
+        let employees = JSON.parse(data)
+        callback(employees);
+    }
+}
